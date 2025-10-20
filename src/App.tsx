@@ -104,7 +104,13 @@ function App() {
         <button onClick={dcapi}>Request</button>
       </div>
       {dcResponse && (
-        <pre style={{ width: "300px", wordBreak: "break-all" }}>
+        <pre
+          style={{
+            width: "300px",
+            wordBreak: "break-all",
+            whiteSpace: "normal",
+          }}
+        >
           {JSON.stringify(dcResponse, null, 2)}
         </pre>
       )}
