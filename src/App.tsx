@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 
 async function request() {
@@ -86,12 +87,14 @@ async function request() {
     },
   } as any);
   console.log(dcResponse);
+  return dcResponse;
 }
 
 function App() {
+  const [dcResponse, setDcResponse] = useState<any>(null);
   const dcapi = async () => {
-    const result = await request();
-    console.log(result);
+    const result = (await request()) as any;
+    if (result) setDcResponse(result.data.vp_token[0]);
   };
   return (
     <>
@@ -99,6 +102,7 @@ function App() {
       <div className="card">
         <button onClick={dcapi}>Request</button>
       </div>
+      {dcResponse && <pre>{JSON.stringify(dcResponse, null, 2)}</pre>}
     </>
   );
 }
