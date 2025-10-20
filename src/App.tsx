@@ -94,6 +94,7 @@ function App() {
   const [dcResponse, setDcResponse] = useState<any>(null);
   const dcapi = async () => {
     const result = (await request()) as any;
+    console.log(result.data.vp_token[0]);
     if (result) setDcResponse(result.data.vp_token[0]);
   };
   return (
