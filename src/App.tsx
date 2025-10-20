@@ -63,8 +63,8 @@ async function request() {
                   },
                   claims: [
                     {
-                      id: "given_name",
-                      path: ["org.iso.18013.5.1", "given_name"],
+                      id: "document_number",
+                      path: ["org.iso.18013.5.1", "document_number"],
                       intent_to_retain: false,
                     },
                   ],
