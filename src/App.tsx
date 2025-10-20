@@ -103,7 +103,11 @@ function App() {
       <div className="card">
         <button onClick={dcapi}>Request</button>
       </div>
-      {dcResponse && <pre>{JSON.stringify(dcResponse, null, 2)}</pre>}
+      {dcResponse && (
+        <pre style={{ width: "300px" }}>
+          {JSON.stringify(dcResponse, null, 2)}
+        </pre>
+      )}
     </>
   );
 }
