@@ -1,6 +1,17 @@
 import { useState } from "react";
 import "./App.css";
 
+const encKey = {
+  kty: "EC",
+  d: "H5jo9QcyLQ69NEMib6JRpVmMzchFmR4vIkborjxA1dA",
+  use: "enc",
+  crv: "P-256",
+  kid: "key-1",
+  x: "ICobFkIt6Q3zDRTh9V_9Foy-lZ96dv_Fx8mTxT_fmKc",
+  y: "7N3F9JRjXZkZZIWMeRjM-6uXbvQX94cnHL-sBJssqxM",
+  alg: "ECDH-ES",
+};
+
 async function request() {
   if (typeof (window as any).DigitalCredential === "undefined") {
     alert("DigitalCredential is not defined");
@@ -13,11 +24,24 @@ async function request() {
     digital: {
       requests: [
         {
-          protocol: "openid4vp",
+          protocol: "openid4vp-v1-unsigned",
           data: {
             response_type: "vp_token",
             nonce: "596517540237152598101737",
             client_metadata: {
+              jwks: {
+                keys: [
+                  {
+                    kty: "EC",
+                    use: "enc",
+                    crv: "P-256",
+                    kid: "key-1",
+                    x: "ICobFkIt6Q3zDRTh9V_9Foy-lZ96dv_Fx8mTxT_fmKc",
+                    y: "7N3F9JRjXZkZZIWMeRjM-6uXbvQX94cnHL-sBJssqxM",
+                    alg: "ECDH-ES",
+                  },
+                ],
+              },
               vp_formats: {
                 mso_mdoc: {
                   alg: ["EdDSA", "ES256", "ES384"],
@@ -80,7 +104,7 @@ async function request() {
             },
             client_id: "x509_san_dns:dcapi-test.vercel.app",
             expected_origins: ["https://dcapi-test.vercel.app"],
-            response_mode: "dc_api",
+            response_mode: "dc_api.jwt",
           },
         },
       ],
