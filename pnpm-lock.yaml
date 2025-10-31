@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@sd-jwt/utils':
+        specifier: ^0.17.0
+        version: 0.17.0
+      jose:
+        specifier: ^6.1.0
+        version: 6.1.0
       react:
         specifier: ^19.1.1
         version: 19.2.0
@@ -488,6 +494,14 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@sd-jwt/types@0.17.0':
+    resolution: {integrity: sha512-XMZprAzSst+ze6JXoMttV3zrUNTL9VFAzHWChENTlFuh9tM6gy+/hJjFyTO0RVO0SRRNl2c7eMeYu7byLMj6Jg==}
+    engines: {node: '>=20'}
+
+  '@sd-jwt/utils@0.17.0':
+    resolution: {integrity: sha512-Xe6GgO3tzjQrKbwVgtrE4LkB8Prcl0zCX+LDFC0QCzsvrks1jEFSPpcpP5Ge/ESBK6LrNG/srBKOQlFM/RuGsg==}
+    engines: {node: '>=20'}
+
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
 
@@ -842,6 +856,12 @@ packages:
 
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
+
+  jose@6.1.0:
+    resolution: {integrity: sha512-TTQJyoEoKcC1lscpVDCSsVgYzUDg/0Bt3WE//WiTPK6uOCQC2KZS4MpugbMWt/zyjkopgZoXhZuCi00gLudfUA==}
+
+  js-base64@3.7.8:
+    resolution: {integrity: sha512-hNngCeKxIUQiEUN3GPJOkz4wF/YvdUdbNL9hsBcMQTkKzboD7T/q3OYOuuPZLUE6dBxSGpwhk5mwuDud7JVAow==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -1472,6 +1492,13 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.52.5':
     optional: true
 
+  '@sd-jwt/types@0.17.0': {}
+
+  '@sd-jwt/utils@0.17.0':
+    dependencies:
+      '@sd-jwt/types': 0.17.0
+      js-base64: 3.7.8
+
   '@types/babel__core@7.20.5':
     dependencies:
       '@babel/parser': 7.28.4
@@ -1883,6 +1910,10 @@ snapshots:
   is-number@7.0.0: {}
 
   isexe@2.0.0: {}
+
+  jose@6.1.0: {}
+
+  js-base64@3.7.8: {}
 
   js-tokens@4.0.0: {}
 

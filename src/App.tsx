@@ -1,5 +1,27 @@
 import { useState } from "react";
 import "./App.css";
+import { compactDecrypt } from "jose";
+import { uint8ArrayToBase64Url } from "@sd-jwt/utils";
+
+async function decryptJWE(jwe: string, privateKey: JsonWebKey) {
+  try {
+    const { plaintext, protectedHeader } = await compactDecrypt(
+      jwe,
+      privateKey
+    );
+
+    // plaintext는 Uint8Array로 반환됨
+    const decodedText = uint8ArrayToBase64Url(plaintext);
+
+    console.log("복호화된 메시지:", decodedText);
+    console.log("보호된 헤더:", protectedHeader);
+
+    return decodedText;
+  } catch (error) {
+    console.error("복호화 실패:", error);
+    throw error;
+  }
+}
 
 export const encKey = {
   kty: "EC",
@@ -111,15 +133,15 @@ async function request() {
     },
   } as any);
   console.log(dcResponse);
-  return dcResponse;
+  if (!dcResponse) return;
+  return decryptJWE((dcResponse as any).data.response, encKey);
 }
 
 function App() {
   const [dcResponse, setDcResponse] = useState<any>(null);
   const dcapi = async () => {
     const result = (await request()) as any;
-    console.log(result.data.vp_token[0]);
-    if (result) setDcResponse(result.data.vp_token[0]);
+    if (result) setDcResponse(result);
   };
   return (
     <>
