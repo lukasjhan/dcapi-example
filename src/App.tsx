@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 
-const encKey = {
+export const encKey = {
   kty: "EC",
   d: "H5jo9QcyLQ69NEMib6JRpVmMzchFmR4vIkborjxA1dA",
   use: "enc",
