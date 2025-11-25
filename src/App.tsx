@@ -11,7 +11,7 @@ async function request() {
   const { data: requestData } = await axios.post(
     "https://iata-poc.dev.hopae.app/openid4vp/sessions",
     {
-      expected_origins: ["https://dcapi-test.vercel.app"],
+      expected_origins: ["https://dcapi-example.vercel.app"],
     }
   );
 
