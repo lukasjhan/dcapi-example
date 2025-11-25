@@ -28,10 +28,12 @@ async function request() {
   console.log(dcResponse);
   if (!dcResponse) return;
 
+  const { response } = dcResponse as any;
+
   const verified = await axios.post(
     `https://iata-poc.dev.hopae.app/openid4vp/verification/${sessionId}`,
     {
-      response: dcResponse,
+      response,
     }
   );
 
