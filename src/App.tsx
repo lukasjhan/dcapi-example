@@ -9,7 +9,7 @@ async function request() {
   }
 
   const { data: requestData } = await axios.post(
-    "https://iata-poc.dev.hopae.app/openid4vp/sessions",
+    "https://iata-poc.dev.hopae.app/openid4vp/sessions?type=epassport",
     {
       expected_origins: ["https://dcapi-example.vercel.app"],
     }
@@ -33,7 +33,7 @@ async function request() {
   } = dcResponse as any;
 
   const verified = await axios.post(
-    `https://iata-poc.dev.hopae.app/openid4vp/verification/${sessionId}`,
+    `https://iata-poc.dev.hopae.app/openid4vp/verification/${sessionId}?type=epassport`,
     {
       response,
     }
