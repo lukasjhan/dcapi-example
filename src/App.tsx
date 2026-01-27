@@ -33,7 +33,7 @@ async function request() {
   } = dcResponse as any;
 
   const verified = await axios.post(
-    `https://iata-poc.dev.hopae.app/openid4vp/verification/${sessionId}?type=epassport`,
+    `https://iata-poc.dev.hopae.app/openid4vp/verifications/${sessionId}?type=epassport`,
     {
       response,
     }
